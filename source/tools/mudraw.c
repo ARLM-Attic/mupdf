@@ -719,15 +719,16 @@ static void drawrange(fz_context *ctx, fz_document *doc, char *range)
 				epage = pagecount;
 		}
 
-		spage = fz_clampi(spage, 1, pagecount);
-		epage = fz_clampi(epage, 1, pagecount);
-
 		if (spage < epage)
-			for (page = spage; page <= epage; page++)
+			for (page = spage; page <= epage; page++) {
+				if (page < 1 || page > pagecount) continue;
 				drawpage(ctx, doc, page);
+			}
 		else
-			for (page = spage; page >= epage; page--)
+			for (page = spage; page >= epage; page--) {
+				if (page < 1 || page > pagecount) continue;
 				drawpage(ctx, doc, page);
+			}
 
 		spec = fz_strsep(&range, ",");
 	}

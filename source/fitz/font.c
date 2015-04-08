@@ -5,7 +5,7 @@
 #include FT_ADVANCES_H
 #include FT_STROKER_H
 
-#define MAX_BBOX_TABLE_SIZE 4096
+#define MAX_BBOX_TABLE_SIZE 65536
 
 /* 20 degrees */
 #define SHEAR 0.36397f
